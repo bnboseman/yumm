@@ -15,7 +15,7 @@ function yumm_setup() {
 /**
  * Register sidebar
  */
-function yumm_sidbar() {
+function yumm_sidebar() {
 	register_sidebar(array(
 		'name' => esc_html__('Sidebar', 'yumm'),
 		'id' => 'sidebar-1',
