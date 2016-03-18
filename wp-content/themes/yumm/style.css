@@ -482,7 +482,8 @@ img {
   width: 75%; }
 
 .site-main {
-  margin: 0; }
+  margin: 0;
+  margin-bottom: 100px; }
 
 .sidebar {
   float: right;
@@ -494,7 +495,12 @@ img {
   background-color: #eeeeee;
   height: 100%;
   margin: auto;
-  overflow: scroll; }
+  overflow: scroll;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0; }
 
 ul.categories {
   list-style: none; }
