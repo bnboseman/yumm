@@ -17,6 +17,11 @@
 				} // foreach ( $keys as $key) ?>
 				<?php echo get_the_term_list( get_the_ID(), 'recipe-category', null, ' '); ?>
 			</header>
+			<?php if ( has_post_thumbnail() ) { ?>
+				<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
+					<?php the_post_thumbnail('medium'); ?>
+				</a>
+			<?php } ?>
 			<?php the_content(); ?>
 		</article>
 		<?php

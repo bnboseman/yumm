@@ -4,12 +4,15 @@
 		<?php
 			// If this is the front page get all recipes and posts
 			if (is_front_page() ) {
+				$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 				$query = new WP_Query( array(
 					'post_type' => array(
 						'recipe',
 						'post'),
 					'orderby' => 'date',
-					'order' => 'desc') );
+					'order' => 'desc',
+					'posts_per_page' => get_option( 'posts_per_page' ),
+					'paged' => $paged ) );
 
 			// if we have post start the loop
 			if ( $query->have_posts() ) {
