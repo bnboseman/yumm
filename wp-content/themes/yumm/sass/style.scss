@@ -110,10 +110,10 @@ div[class^='fulltext-'] {
         margin: 0;
         padding: 0;
         li {
-            border-bottom: 1px solid $accentcolor;
             position: relative;
             a {
                display: block;
+	 	border-bottom: 1px solid $accentcolor;
                padding: $smallspace*2 $smallspace;
             }
             a:hover {
@@ -153,8 +153,9 @@ ul.categories li {
 		float: none;
 	   margin-bottom: 100px;
 	}
+	img {
+		display: block;
+		margin: auto;		
+	}
 }
 
-@media only screen and (max-width : 992px) {
-	
-}

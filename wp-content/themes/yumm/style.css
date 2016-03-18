@@ -522,10 +522,10 @@ div[class^='fulltext-'] {
   margin: 0;
   padding: 0; }
   .widget ul li {
-    border-bottom: 1px solid #7a694b;
     position: relative; }
     .widget ul li a {
       display: block;
+      border-bottom: 1px solid #7a694b;
       padding: 10px 5px; }
     .widget ul li a:hover {
       background-color: #7a694b;
@@ -552,6 +552,10 @@ ul.categories li {
   .sidebar {
     width: 100%;
     float: none;
-    margin-bottom: 100px; } }
+    margin-bottom: 100px; }
+
+  img {
+    display: block;
+    margin: auto; } }
 
 /*# sourceMappingURL=style.css.map */
