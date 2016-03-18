@@ -4,14 +4,15 @@
 		<?php 
 		while ( have_posts() ): 
 			the_post();
-			$fields =  get_post_custom();
-			$keys = array_keys($fields);
 		?>
 			
 			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 				<header>
 					<?php the_title( '<h1 class="title">', '</h1>' ); ?>
-					<?php foreach ( $keys as $key):
+					<?php 
+							$fields =  get_post_custom();
+							$keys = array_keys($fields);
+							foreach ( $keys as $key):
 							if (substr_compare($key, '_', 0, 1) ) {
 								echo "<strong>$key: </strong> {$fields[$key][0]}<br />";
 							}

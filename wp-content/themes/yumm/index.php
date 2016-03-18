@@ -33,6 +33,7 @@
 					elseif ( get_post_type() == 'recipe'): ?>
 						<article>
 							<h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
+							<div><?php echo get_the_term_list( get_the_ID(), 'recipe-category', null, ' '); ?></div>
 							<?php
 							// show thumbnail of image if the recipe has one
 							if ( has_post_thumbnail() ) { ?>
