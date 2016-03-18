@@ -4,12 +4,12 @@
 		<?php
 			// If this is the front page get all recipes and posts
 			if (is_front_page() ) {
-$query = new WP_Query( array(
-		'post_type' => array(
-				'recipe',
-				'post'),
-		'orderby' => 'date',
-		'order' => 'desc') );
+				$query = new WP_Query( array(
+					'post_type' => array(
+						'recipe',
+						'post'),
+					'orderby' => 'date',
+					'order' => 'desc') );
 
 			// if we have post start the loop
 			if ( $query->have_posts() ) {
@@ -44,14 +44,14 @@ $query = new WP_Query( array(
 							<?php
 							} ?>
 						</article>
-						<?php { // get_post_type() == 'recipe'
+					<?php } // get_post_type() == 'recipe'
 				} //  $query->have_posts()
 			} // $query->have_posts()
 	} else { // if (is_front_page() )
-			while ( have_posts() ):
+			while ( have_posts() ) {
 				the_post();
 
-			endwhile;
+			}
 	} ?>
 	</main><!-- #main -->
 </div><!-- #primary -->
