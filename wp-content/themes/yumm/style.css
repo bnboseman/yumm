@@ -10,11 +10,13 @@ Description: Exercise for SYPartners
 */
 @import url("normalize");
 @import url("wordpress");
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
 html, body {
   position: relative; }
 
 html {
-  height: 100%; }
+  height: 100%;
+  font-family: 'Open Sans', sans-serif; }
 
 body {
   background: url("img/background.jpeg") no-repeat center center fixed;
