@@ -19,43 +19,14 @@
 				// loop though all posts
 				while ( $query->have_posts() ) {
 					$query->the_post();
-					// if the post is an actual post
-					if ( get_post_type() == 'post'){ ?>
-						<article>
-							<h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
-							<strong>Posted: </strong><?php the_date(); ?>
-							<div class="snippet-<?php the_ID() ?>" data-post-id="<?php the_ID() ?>">
-								<?php the_excerpt(); ?>
-							</div>
-
-							<div class="fulltext-<?php the_ID() ?>" data-post-id="<?php the_ID() ?>">
-								<?php  the_content(); ?>
-							</div>
-						</article>
-						<?php
-						// if the post is a recipe
-					} elseif ( post_type_exists('recipe') && get_post_type() == 'recipe') { ?>
-						<article>
-							<h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
-							<div><?php 
-							$category_count = count(get_the_category());
-							echo get_the_term_list( get_the_ID(), 'recipe-category', $category_count == 1 ?'<p><strong>Category: </strong>' : '<p><strong>Categories: </strong>', ', ', '</p>'); ?></div>
-							<?php
-							// show thumbnail of image if the recipe has one
-							if ( has_post_thumbnail() ) { ?>
-								<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
-								<?php the_post_thumbnail('medium'); ?>
-								</a>
-							<?php
-							} ?>
-						</article>
-					<?php } // get_post_type() == 'recipe'
+					// load template
+					get_template_part( 'templates/content' );
 				} //  $query->have_posts()
 			} // $query->have_posts()
 	} else { // if (is_front_page() )
 			while ( have_posts() ) {
 				the_post();
-
+				get_template_part( 'templates/content', 'post' );
 			}
 	} ?>
 	<div class="navigation">
