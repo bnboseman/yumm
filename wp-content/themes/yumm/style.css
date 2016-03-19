@@ -59,8 +59,7 @@ img {
   max-width: 960px;
   background-color: #eeeeee;
   height: 100%;
-  margin: auto;
-  margin-top: 75px;
+  margin: 75px auto;
   overflow: scroll;
   position: absolute;
   top: 0;
@@ -143,5 +142,15 @@ ul.categories li {
     display: none; } }
 ul.categories {
   list-style: none; }
+
+.alignleft {
+  float: left; }
+
+.alignright {
+  float: right; }
+
+.navigation {
+  display: inline-block;
+  width: 100%; }
 
 /*# sourceMappingURL=style.css.map */

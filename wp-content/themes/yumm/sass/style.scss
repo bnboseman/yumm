@@ -72,8 +72,7 @@ img {
 	max-width: $fullwidth;
 	background-color: $container-color;
 	height: 100%;
-	margin: auto;
-	margin-top: $header-size;
+	margin: $header-size auto;
 	overflow: scroll;
 	position: absolute;
 	top: 0;
@@ -170,4 +169,17 @@ ul.categories {
 	list-style: none;
 }
 .bypostauthor {
+}
+
+.alignleft {
+	float: left;
+}
+
+.alignright {
+    float: right;
+}
+
+.navigation {
+    display: inline-block;
+    width: 100%;
 }
