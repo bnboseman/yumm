@@ -2,6 +2,10 @@
 Theme Name: Yumm Theme
 Author: Nichole Boseman
 Author URI: http://nicholeboseman.com
+Version: 0.9
+License: GNU General Public License v2.0
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
 Description: Exercise for SYPartners
 */
 html {
@@ -496,15 +500,31 @@ img {
   background-color: #eeeeee;
   height: 100%;
   margin: auto;
+  margin-top: 75px;
   overflow: scroll;
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
-  right: 0; }
+  right: 0;
+  -webkit-box-shadow: 0px 10px 11px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 10px 11px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 10px 11px 0px rgba(0, 0, 0, 0.75); }
 
-ul.categories {
-  list-style: none; }
+.mainheader {
+  height: 75px;
+  background: #201e1f;
+  color: #7a694b;
+  max-width: 960px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  text-align: center;
+  -webkit-box-shadow: 0px 10px 11px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 10px 11px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 10px 11px 0px rgba(0, 0, 0, 0.75); }
 
 .pull-right {
   float: right; }
@@ -558,5 +578,8 @@ ul.categories li {
   img {
     display: block;
     margin: auto; } }
+/* Required wordpress classes */
+ul.categories {
+  list-style: none; }
 
 /*# sourceMappingURL=style.css.map */

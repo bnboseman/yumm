@@ -9,4 +9,5 @@
 	</head>
 
 	<body <?php body_class(); ?>>
+        <div class="mainheader"><h1><a href="<?php bloginfo('url')?>"><?php bloginfo('name')?></a></h1></div>
 		<div class="container">

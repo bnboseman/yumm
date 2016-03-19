@@ -2,6 +2,10 @@
 Theme Name: Yumm Theme
 Author: Nichole Boseman
 Author URI: http://nicholeboseman.com
+Version: 0.9
+License: GNU General Public License v2.0
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
 Description: Exercise for SYPartners
 */
 
@@ -15,12 +19,12 @@ $container-color: #eeeeee;
 $smallspace: 5px;
 $accentcolor: #7a694b;
 $highlightcolor: #fff;
-
+$header-size: 75px;
 @import "normalize";
 @import "wordpress";
 
 html, body {
-	position: relative;
+    position: relative;
 }
 
 html {
@@ -28,20 +32,20 @@ html {
 }
 
 body {
-	background: url('img/background.jpeg')  no-repeat center center fixed;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-	background-color: $background-color;
-	overflow: hidden;
-	min-height: 100%;
-	padding:0;
-	margin: 0;
+    background: url('img/background.jpeg')  no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-color: $background-color;
+    overflow: hidden;
+    min-height: 100%;
+    padding:0;
+    margin: 0;
 }
 
 article {
-	display: block;
+    display: block;
 }
 
 a {
@@ -55,40 +59,55 @@ img {
     height: auto;
 }
 .content-area {
-	float: left;
-	margin: 0 (-$sidebarwidth) 0 0;
-	width: $mainwidth;
-	
+    float: left;
+    margin: 0 (-$sidebarwidth) 0 0;
+    width: $mainwidth;
+    
 }
 .site-main {
-	margin: 0;
-	margin-bottom: 100px;
+    margin: 0;
+    margin-bottom: 100px;
 }
 
 .sidebar {
-	float: right;
-	padding-bottom: 50px;
-	width: $sidebarwidth;
+    float: right;
+    padding-bottom: 50px;
+    width: $sidebarwidth;
 }
 
 .container {
-	padding: $twenty;
-	max-width: $fullwidth;
-	background-color: $container-color;
-	height: 100%;
-	 margin: auto;
-	 overflow: scroll;
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
+    padding: $twenty;
+    max-width: $fullwidth;
+    background-color: $container-color;
+    height: 100%;
+     margin: auto;
+     margin-top: $header-size;
+     overflow: scroll;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    -webkit-box-shadow: 0px 10px 11px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 10px 11px 0px rgba(0,0,0,0.75);
+box-shadow: 0px 10px 11px 0px rgba(0,0,0,0.75);
 }
 
-ul.categories {
-	list-style: none;
+.mainheader {
+    height: $header-size;
+    background: $background-color;
+    color:  $accentcolor;
+    max-width: $fullwidth;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    padding: 0 20px;
+    text-align: center;
+    -webkit-box-shadow: 0px 10px 11px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 10px 11px 0px rgba(0,0,0,0.75);
+box-shadow: 0px 10px 11px 0px rgba(0,0,0,0.75);
 }
-
 .pull-right {
     float: right;
 }
@@ -114,7 +133,7 @@ div[class^='fulltext-'] {
             position: relative;
             a {
                display: block;
-	 	border-bottom: 1px solid $accentcolor;
+        border-bottom: 1px solid $accentcolor;
                padding: $smallspace*2 $smallspace;
             }
             a:hover {
@@ -126,14 +145,14 @@ div[class^='fulltext-'] {
 }
 
 .sidebar input[type=text] {
-	width: 100%;
-	padding: $smallspace;
-	margin: $smallspace 0;
-	border: 1px solid $background-color;
+    width: 100%;
+    padding: $smallspace;
+    margin: $smallspace 0;
+    border: 1px solid $background-color;
 }
 ul.categories li {
-	float: left;
-	margin: 0 10px;
+    float: left;
+    margin: 0 10px;
 }
 @media only screen and (max-width : 480px) {
 
@@ -141,22 +160,37 @@ ul.categories li {
 
 @media only screen and (max-width : 768px) {
 .content-area {
-		float: none;
-		width: 100%;
-	}
-	
-	.site-main {
-		margin: 0;
-	}
-	
-	.sidebar {
-		width: 100%;
-		float: none;
-	   margin-bottom: 100px;
-	}
-	img {
-		display: block;
-		margin: auto;		
-	}
+        float: none;
+        width: 100%;
+    }
+    
+    .site-main {
+        margin: 0;
+    }
+    
+    .sidebar {
+        width: 100%;
+        float: none;
+       margin-bottom: 100px;
+    }
+    img {
+        display: block;
+        margin: auto;       
+    }
 }
 
+/* Required wordpress classes */
+.sticky {
+    
+}
+
+.gallery-caption {
+    
+}
+ul.categories {
+    list-style: none;
+}
+
+.bypostauthor {
+    
+}
