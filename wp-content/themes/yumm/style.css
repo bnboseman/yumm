@@ -120,6 +120,13 @@ div[class^='fulltext-'] {
       background-color: #7a694b;
       color: #fff; }
 
+input[type=submit] {
+  background: rgba(32, 30, 31, 0.3);
+  border: 1px solid rgba(32, 30, 31, 0.3);
+  color: #201e1f;
+  padding: 5px;
+  border-radius: 2px; }
+
 .sidebar input[type=text],
 textarea {
   width: 98%;

@@ -23,6 +23,7 @@ $smallspace: 5px;
 $accentcolor: #7a694b;
 $highlightcolor: #fff;
 $header-size: 75px;
+$borderradius: 2px;
 
 html, body {
 	position: relative;
@@ -114,7 +115,7 @@ img {
 .commentsection {
 	background: #fff;
 	padding: $twenty / 2;
-	border-radius: 2px;
+	border-radius: $borderradius;
 	.navigation {
 	   margin: 0;
 	}
@@ -141,13 +142,22 @@ div[class^='fulltext-'] {
 		}
 	}
 }
+
+input[type=submit] {
+	background: $lightbackground;
+	border: 1px solid $lightbackground;
+	color: $background-color;
+	padding: $smallspace;
+	border-radius: $borderradius;
+	
+}
 .sidebar input[type=text],
 textarea {
 	width: 98%;
 	padding: $smallspace;
 	margin: $smallspace 0;
 	border: 1px solid $lightbackground;
-	border-radius: 2px;
+	border-radius: $borderradius;
 }
 ul.categories li {
 	float: left;
