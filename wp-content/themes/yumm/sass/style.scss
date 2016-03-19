@@ -17,6 +17,7 @@ $mainwidth: 75%;
 $twenty: 20px;
 $fullwidth: 960px;
 $background-color: #201e1f;
+$lightbackground: rgba(32,30,31,.3);
 $container-color: #eeeeee;
 $smallspace: 5px;
 $accentcolor: #7a694b;
@@ -109,6 +110,15 @@ img {
 .clearfix {
 	clear: both;
 }
+
+.commentsection {
+	background: #fff;
+	padding: $twenty / 2;
+	border-radius: 2px;
+	.navigation {
+	   margin: 0;
+	}
+}
 div[class^='fulltext-'] {
 	display: none;
 }
@@ -131,11 +141,13 @@ div[class^='fulltext-'] {
 		}
 	}
 }
-.sidebar input[type=text] {
-	width: 100%;
+.sidebar input[type=text],
+textarea {
+	width: 98%;
 	padding: $smallspace;
 	margin: $smallspace 0;
-	border: 1px solid $background-color;
+	border: 1px solid $lightbackground;
+	border-radius: 2px;
 }
 ul.categories li {
 	float: left;

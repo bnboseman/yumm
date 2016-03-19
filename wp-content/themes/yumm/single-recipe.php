@@ -31,7 +31,12 @@
 			<?php the_content(); ?>
 		</article>
 		<?php
-	} // while ( have_posts() ) ?>
+	} // while ( have_posts() )
+	if ( get_option( 'yumm_recipe_comments') == 1 && (comments_open() || get_comments_number() ) ) {
+		comments_template();
+	} // comments_open() || get_comments_number()
+		?>
+	<div class="navigation"></div>
 	</main>
 
 </div><!-- #primary -->

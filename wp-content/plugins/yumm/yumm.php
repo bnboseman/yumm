@@ -10,7 +10,7 @@
 add_action('widgets_init', 'yumm_widgets');
 add_action('init', 'yumm_post_type', 0);
 add_action('wp_enqueue_scripts', 'yumm_scripts');
-
+add_action('admin_init', 'yumm_initialize_options');
 /**
  * Register Wiget
  */
@@ -72,6 +72,33 @@ function yumm_scripts() {
 		wp_enqueue_script('yumm_script', get_template_directory_uri() . '/js/script.js', ['jquery']);
 	}
 }
+
+/**
+ * Register Options
+ */
+function yumm_initialize_options() {
+	register_setting(
+			'discussion',							// option group
+			'yumm_recipe_comments');				// option name
+	
+	add_settings_field(
+			'yumm_recipe_comment', 				// id
+			__('Recipe Comments'),					// title
+			'yumm_comments_input',					//callback
+			'discussion',							// page;
+			'default');							// settings section
+}
+
+function yumm_comments_input() {
+	$setting = get_option( 'yumm_recipe_comments');
+	?>
+	<div>
+		<label for="yumm_recipe_comments">
+		<input name="yumm_recipe_comments" type="checkbox" id="yumm_recipe_comments" value="1" <?php echo $setting == '1' ? 'checked="checked"':'' ; ?>">
+		Allow Comments on Recipes</label>
+	</div>	
+<?php }
+
 
 class Yumm_Widget extends WP_Widget {
 	/*

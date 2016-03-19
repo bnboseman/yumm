@@ -96,6 +96,13 @@ img {
 .clearfix {
   clear: both; }
 
+.commentsection {
+  background: #fff;
+  padding: 10px;
+  border-radius: 2px; }
+  .commentsection .navigation {
+    margin: 0; }
+
 div[class^='fulltext-'] {
   display: none; }
 
@@ -113,11 +120,13 @@ div[class^='fulltext-'] {
       background-color: #7a694b;
       color: #fff; }
 
-.sidebar input[type=text] {
-  width: 100%;
+.sidebar input[type=text],
+textarea {
+  width: 98%;
   padding: 5px;
   margin: 5px 0;
-  border: 1px solid #201e1f; }
+  border: 1px solid rgba(32, 30, 31, 0.3);
+  border-radius: 2px; }
 
 ul.categories li {
   float: left;

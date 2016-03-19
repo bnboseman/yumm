@@ -25,7 +25,12 @@
 
 				<?php the_content() ?>
 			</article>
-		<?php } //while ( have_posts() )  ?>
+		<?php } //while ( have_posts() )  '
+		if ( comments_open() || get_comments_number() ) :
+		comments_template();
+		endif;
+		?>
+		<div class="navigation"></div>
 	</main>
 </div><!-- #primary -->
 
