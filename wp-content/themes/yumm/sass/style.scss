@@ -61,20 +61,21 @@ img {
 .site-main {
 	margin: 0;
 	margin-bottom: 100px;
+	padding-right: 20px;
 }
 .sidebar {
 	float: right;
-	padding-bottom: 50px;
+	padding: $twenty 0;
 	width: $sidebarwidth;
 }
 .container {
-	padding: $twenty;
+	padding-right: $twenty;
+	padding-left: $twenty;
 	max-width: $fullwidth;
 	background-color: $container-color;
 	height: 100%;
 	margin: $header-size auto;
-	overflow: scroll;
-	position: absolute;
+	overflow: scroll;position: absolute;
 	top: 0;
 	bottom: 0;
 	left: 0;
@@ -147,6 +148,7 @@ ul.categories li {
 	}
 	.site-main {
 		margin: 0;
+		padding: 0px;
 	}
 	.sidebar {
 		width: 100%;
@@ -182,4 +184,5 @@ ul.categories {
 .navigation {
     display: inline-block;
     width: 100%;
+    margin: $twenty 0;
 }

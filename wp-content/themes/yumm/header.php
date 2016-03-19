@@ -1,6 +1,8 @@
+<?php if ( ! isset( $content_width ) ) $content_width = 720;?>
 <!DOCTYPE html>
-<html>
+<html <?php language_attributes(); ?>>
 	<head>
+		<meta charset="<?php bloginfo( 'charset' ); ?>">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="profile" href="http://gmpg.org/xfn/11">
 		<link rel="pingback" href="<?php bloginfo('pingback_url');?>">
@@ -10,7 +12,7 @@
 
 	<body <?php body_class(); ?>>
         <div class="mainheader">
-            <h1><a href="<?php bloginfo('url')?>"><?php bloginfo('name')?></a></h1>
+            <h1><a href="<?php  bloginfo('url') ?>"><?php bloginfo('name')?></a></h1>
             <div class="description"><?php bloginfo('description')?></div>
         </div>
 		<div class="container">
