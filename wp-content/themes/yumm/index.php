@@ -34,10 +34,12 @@
 						</article>
 						<?php
 						// if the post is a recipe
-					} elseif ( get_post_type() == 'recipe') { ?>
+					} elseif ( post_type_exists('recipe') && get_post_type() == 'recipe') { ?>
 						<article>
 							<h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
-							<div><?php echo get_the_term_list( get_the_ID(), 'recipe-category', null, ' '); ?></div>
+							<div><?php 
+							$category_count = count(get_the_category());
+							echo get_the_term_list( get_the_ID(), 'recipe-category', $category_count == 1 ?'<p><strong>Category: </strong>' : '<p><strong>Categories: </strong>', ', ', '</p>'); ?></div>
 							<?php
 							// show thumbnail of image if the recipe has one
 							if ( has_post_thumbnail() ) { ?>

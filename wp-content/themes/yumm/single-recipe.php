@@ -15,9 +15,10 @@
 					if (substr_compare($key, '_', 0, 1) ) {
 						echo "<p><strong>$key: </strong> {$fields[$key][0]}</p>";
 					}
-				} // foreach ( $keys as $key) ?>
-				<p><?php echo get_the_term_list( get_the_ID(), 'recipe-category', "<strong>Category:</strong> ", '  '); ?></p>
-				
+				} // foreach ( $keys as $key)
+					$category_count = count(get_the_category());
+					echo get_the_tag_list('<p><strong>Tags:</strong> ',', ','</p>'); ?>
+				    <p><strong>Posted: </strong><?php the_date(); ?> by <strong><?php the_author_link(); ?></strong> </p>
 			</header>
 			<?php if ( has_post_thumbnail() ) { ?>
 				<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
