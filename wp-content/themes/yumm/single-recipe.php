@@ -10,11 +10,11 @@
 				the_title( '<h1 class="title">', '</h1>' ); ?>
 				<p><strong>Posted: </strong><?php the_date(); ?> by <strong><?php the_author_link(); ?></strong> </p>
 				
-                <?php 
-                $category_count = count(get_the_category());
-                echo get_the_term_list( get_the_ID(), 'recipe-category', $category_count == 1 ?'<p><strong>Category: </strong>' : '<p><strong>Categories: </strong>', ', ', '</p>'); ?>
-                <?php 
-                $fields =  get_post_custom();
+				<?php 
+				$category_count = count(get_the_category());
+				echo get_the_term_list( get_the_ID(), 'recipe-category', $category_count == 1 ?'<p><strong>Category: </strong>' : '<p><strong>Categories: </strong>', ', ', '</p>'); ?>
+				<?php 
+				$fields =  get_post_custom();
 				$keys = array_keys($fields);
 				foreach ( $keys as $key) {
 					if (substr_compare($key, '_', 0, 1) ) {
@@ -34,9 +34,9 @@
 	} // while ( have_posts() ) ?>
 	</main>
 
-	</div><!-- #primary -->
+</div><!-- #primary -->
 
-	<div class="sidebar">
-		<?php get_sidebar(); ?>
-	</div>
+<div class="sidebar">
+	<?php get_sidebar(); ?>
+</div>
 <?php get_footer(); ?>
