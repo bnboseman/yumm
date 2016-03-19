@@ -31,7 +31,8 @@ function yumm_post_type()
         'show_in_menu' => true,
         'hierarchical' => true,
     ));
-    register_post_type('recipe', array(
+    $comments_setting = get_option( 'yumm_recipe_comments');
+    $args = array(
          'labels' => array(
              'name' => __('Recipes'),
             'singular_name' => __('Recipe'),
@@ -48,16 +49,18 @@ function yumm_post_type()
         'menu_position' => 5,
         'capability_type' => 'post',
         'supports' => array(
-             'title',
-            'excerpt',
+            'title',
             'editor',
             'author',
             'thumbnail',
-            'comments',
-            'revisions',
             'custom-fields',
         ),
-    ));
+    );
+    
+    if ($comments_setting == "1") {
+    	array_push($args['supports'], 'comments');
+    }
+    register_post_type('recipe', $args);
 }
 
 /**
