@@ -9,8 +9,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Description: Exercise for SYPartners
 */
 
-@import url('normalize');
-@import url('wordpress');
+
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
 $sidebarwidth: 25%;
@@ -25,6 +24,9 @@ $accentcolor: #7a694b;
 $highlightcolor: #fff;
 $header-size: 75px;
 $borderradius: 2px;
+
+@import "normalize";
+@import "wordpress";
 
 html, body {
 	position: relative;
