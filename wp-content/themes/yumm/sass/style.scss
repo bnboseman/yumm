@@ -119,6 +119,24 @@ img {
 	.navigation {
 	   margin: 0;
 	}
+	
+	ol, ul {
+	   list-style: none;
+	   padding: 0 $twenty;
+	   li {
+	       padding: $smallspace;
+	       
+	   }
+	}
+	
+	.commentlist {
+	   li:nth-child(2n) {
+	       background: #eee;
+	   }
+	   > li {
+	       border-bottom: 1px solid $accentcolor;
+	   }
+	}
 }
 div[class^='fulltext-'] {
 	display: none;
@@ -184,6 +202,15 @@ ul.categories li {
 	.mainheader .description {
 		display: none;
 	}
+	
+	.commentsection {
+	    ol, ul {
+	       padding: 0 $twenty/2;
+	    }
+	    .comment-author img {
+	       display: none;
+	    }
+    }
 }
 .sticky {
 }

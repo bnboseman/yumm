@@ -102,6 +102,15 @@ img {
   border-radius: 2px; }
   .commentsection .navigation {
     margin: 0; }
+  .commentsection ol, .commentsection ul {
+    list-style: none;
+    padding: 0 20px; }
+    .commentsection ol li, .commentsection ul li {
+      padding: 5px; }
+  .commentsection .commentlist li:nth-child(2n) {
+    background: #eee; }
+  .commentsection .commentlist > li {
+    border-bottom: 1px solid #7a694b; }
 
 div[class^='fulltext-'] {
   display: none; }
@@ -158,6 +167,11 @@ ul.categories li {
     margin: auto; }
 
   .mainheader .description {
+    display: none; }
+
+  .commentsection ol, .commentsection ul {
+    padding: 0 10px; }
+  .commentsection .comment-author img {
     display: none; } }
 ul.categories {
   list-style: none; }
