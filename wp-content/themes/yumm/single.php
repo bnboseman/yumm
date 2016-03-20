@@ -20,7 +20,7 @@
 					<p><strong><?php echo ($category_count > 1) ? 'Categories: ' :'Category: '?></strong><?php echo get_the_category_list(' '); ?></p>
 					<?php echo get_the_tag_list('<p><strong>Tags:</strong> ',', ','</p>'); ?>
 					<p><strong>Posted: </strong><?php the_date(); ?> by <strong><?php the_author_link(); ?></strong> </p>
-					<p><strong>Status:</strong> <?php echo ucfirst(get_post_status( )) ; ?></p>
+					<!-- <p><strong>Status:</strong> <?php echo ucfirst(get_post_status( )) ; ?></p> -->
 				</header>
 
 				<?php the_content() ?>
