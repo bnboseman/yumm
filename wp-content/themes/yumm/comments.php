@@ -13,7 +13,7 @@
 		die ('Please do not load this page directly. Thanks!');
 
 	if ( post_password_required() ) { ?>
-		<p class="nocomments"><?php _e('This post is password protected. Enter the password to view comments.', 'default'); ?></p>
+		<p class="nocomments"><?php _e('This post is password protected. Enter the password to view comments.', 'yumm'); ?></p>
 	<?php
 		return;
 	}
@@ -26,10 +26,10 @@
 		<?php
 			if ( 1 == get_comments_number() ) {
 				/* translators: %s: post title */
-				printf( __( 'One response to %s', 'default' ),  '&#8220;' . get_the_title() . '&#8221;' );
+				printf( __( 'One response to %s', 'yumm' ),  '&#8220;' . get_the_title() . '&#8221;' );
 			} else {
 				/* translators: 1: number of comments, 2: post title */
-				printf( _n( '%1$s response to %2$s', '%1$s responses to %2$s', get_comments_number(), 'default' ),
+				printf( _n( '%1$s response to %2$s', '%1$s responses to %2$s', get_comments_number(), 'yumm' ),
 					number_format_i18n( get_comments_number() ),  '&#8220;' . get_the_title() . '&#8221;' );
 			}
 		?>
@@ -55,7 +55,7 @@
 
 	 <?php else : // comments are closed ?>
 		<!-- If comments are closed. -->
-		<p class="nocomments"><?php _e('Comments are closed.', 'default'); ?></p>
+		<p class="nocomments"><?php _e('Comments are closed.', 'yumm'); ?></p>
 
 	<?php endif; ?>
 <?php endif; ?>
@@ -73,4 +73,3 @@ do_action( 'comment_form', $post->ID );
 </div>
 
 <?php endif; // if you delete this the sky will fall on your head ?>
-</div>
