@@ -1,6 +1,7 @@
 <?php get_header() ?>
 <div id="primary" class="content-area">
 	<main id="main" class="site-main" role="main">
+	<h1><?php bloginfo('name');?> <span class="blogdescription"><?php bloginfo('description');?></span></h1>
 		<?php
 			// If this is the front page get all recipes and posts
 			if (is_front_page() ) {

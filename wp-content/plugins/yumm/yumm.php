@@ -113,7 +113,7 @@ class Yumm_Widget extends WP_Widget {
 	 */
 	function __construct() {
 		parent::__construct(
-				'Yumm Widget', // Base ID
+				'yumm_widget', // Base ID
 				__('Yumm Recipe Categories', 'text_domain'), // Name
 				array( 'description' => __( 'Widget to view Yumm Recipe Categories', 'text_domain' ), ) // Args
 				);
@@ -126,25 +126,10 @@ class Yumm_Widget extends WP_Widget {
 	public function widget( $args, $instance ) {
 
 		echo $args['before_widget'];
-		if ( ! empty( $instance['yumm_widget_title'] ) ) {
-			echo $args['before_title'] . apply_filters( 'widget_title', $instance['yumm_widget_title'] ). $args['after_title'];
-		}
 		echo '<h2>' . __( 'Recipes', 'text_domain' ) . '</h2>';
 		echo '<ul>';
 		wp_list_categories( ['taxonomy' => 'recipe-category','title_li' => null] );
 		echo '</ul>';
 		echo $args['after_widget'];
-	}
-	/**
-	 * Sanitize widget form values as they are saved.
-	 * @param array $new_instance Values just sent to be saved.
-	 * @param array $old_instance Previously saved values from database.
-	 *
-	 * @return array Updated safe values to be saved.
-	 */
-	public function update( $new_instance, $old_instance ) {
-		$instance = array();
-		$instance['yumm_widget_title'] = ( ! empty( $new_instance['yumm_widget_title'] ) ) ? strip_tags( $new_instance['yumm_widget_title'] ) : '';
-		return $instance;
 	}
 }
