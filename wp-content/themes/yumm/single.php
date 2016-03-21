@@ -1,6 +1,6 @@
 <?php get_header() ?>
 <div id="primary" class="content-area">
-	<main id="main" class="site-main" role="main">
+	<main id="main" class="site-main">
 		<?php
 		while ( have_posts() ) {
 			the_post();
@@ -18,7 +18,7 @@
 						</a>
 					<?php } 
 					$category_count = count(get_the_category());
-					if ($category_count > 0) {
+					if ($category_count > 0 ) {
 					?>
 					<p><strong><?php echo ($category_count > 1) ? 'Categories: ' :'Category: '?></strong><?php echo get_the_category_list(' '); ?></p>
 					<?php } ?>
