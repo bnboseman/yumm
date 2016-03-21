@@ -9,8 +9,8 @@
 
 add_action('widgets_init', 'yumm_widgets');
 add_action('init', 'yumm_post_type', 0);
-add_action('wp_enqueue_scripts', 'yumm_scripts');
 add_action('admin_init', 'yumm_initialize_options');
+
 /**
  * Register Wiget
  */
@@ -23,6 +23,7 @@ function yumm_widgets() {
  */
 function yumm_post_type()
 {
+	// crerate new taxonomy for the recipe category
     register_taxonomy('recipe-category', 'recipe', array(
          'label' => 'Categories',
         'singular_name' => 'Category',
@@ -31,7 +32,8 @@ function yumm_post_type()
         'show_in_menu' => true,
         'hierarchical' => true,
     ));
-    $comments_setting = get_option( 'yumm_recipe_comments');
+    
+	// Set up arguments for recipe post type
     $args = array(
          'labels' => array(
              'name' => __('Recipes'),
@@ -57,33 +59,27 @@ function yumm_post_type()
         ),
     );
     
+    
+    // Check to see if comments are enabled for recipes; if enabled allow comments
+    $comments_setting = get_option( 'yumm_recipe_comments');
     if ($comments_setting == "1") {
     	array_push($args['supports'], 'comments');
     }
+    
+    // register recipe post type
     register_post_type('recipe', $args);
-}
-
-/**
- * Update jQuery and register script for page expand
- */
-function yumm_scripts() {
-	if (!is_admin()) {
-		// load latest jquery
-		wp_deregister_script('jquery');
-		wp_register_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js', false, '1.11.3');
-		wp_enqueue_script('jquery');
-		wp_enqueue_script('yumm_script', get_template_directory_uri() . '/js/script.js', ['jquery']);
-	}
 }
 
 /**
  * Register Options
  */
 function yumm_initialize_options() {
+	// Register new setting to dissussion page
 	register_setting(
 			'discussion',							// option group
 			'yumm_recipe_comments');				// option name
 	
+	// Create the setting field for the page
 	add_settings_field(
 			'yumm_recipe_comment', 				// id
 			__('Recipe Comments'),					// title
@@ -92,6 +88,9 @@ function yumm_initialize_options() {
 			'default');							// settings section
 }
 
+/**
+ * Funtion to show the checkbox for if to allow comments or not
+ */
 function yumm_comments_input() {
 	$setting = get_option( 'yumm_recipe_comments');
 	?>
@@ -103,8 +102,13 @@ function yumm_comments_input() {
 <?php }
 
 
+/**
+ * Widget to show all recipe categories 
+ * @author nboseman
+ *
+ */
 class Yumm_Widget extends WP_Widget {
-	/*
+	/**
 	 * Register Widget with wordpress
 	 */
 	function __construct() {
@@ -116,9 +120,6 @@ class Yumm_Widget extends WP_Widget {
 	}
 	/**
 	 * Front-end display of widget.
-	 *
-	 * @see WP_Widget::widget()
-	 *
 	 * @param array $args     Widget arguments.
 	 * @param array $instance Saved values from database.
 	 */
@@ -136,9 +137,6 @@ class Yumm_Widget extends WP_Widget {
 	}
 	/**
 	 * Sanitize widget form values as they are saved.
-	 *
-	 * @see WP_Widget::update()
-	 *
 	 * @param array $new_instance Values just sent to be saved.
 	 * @param array $old_instance Previously saved values from database.
 	 *

@@ -9,17 +9,24 @@
 
 			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 				<header>
-					<?php the_title( '<h1 class="title">', '</h1>' ); 
+					<?php the_title( '<h1 class="title">', '</h1>' );  ?>
+					<p><strong>Posted: </strong><?php the_date(); ?><!--  by <strong><?php the_author_link(); ?></strong> --> </p>
+					<?php
 					if ( has_post_thumbnail() ) { ?>
 						<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
 						<?php the_post_thumbnail('medium'); ?>
 						</a>
 					<?php } 
 					$category_count = count(get_the_category());
+					if ($category_count > 0) {
 					?>
 					<p><strong><?php echo ($category_count > 1) ? 'Categories: ' :'Category: '?></strong><?php echo get_the_category_list(' '); ?></p>
-					<?php echo get_the_tag_list('<p><strong>Tags:</strong> ',', ','</p>'); ?>
-					<p><strong>Posted: </strong><?php the_date(); ?> by <strong><?php the_author_link(); ?></strong> </p>
+					<?php } ?>
+					<?php 
+					$tag_count = count(get_the_tags() );
+					if ($tag_count > 0) {
+						echo get_the_tag_list($tag_count > 1 ? '<p><strong>Tags:</strong> ' : '<p><strong>Tag:</strong> ',', ','</p>');
+					}?>
 					<!-- <p><strong>Status:</strong> <?php echo ucfirst(get_post_status( )) ; ?></p> -->
 				</header>
 
