@@ -590,10 +590,13 @@ ul.categories li {
   float: left;
   margin: 0 10px; }
 
-@media only screen and (max-width: 998px) {
+@media only screen and (max-width: 960px) {
   .blogdescription {
     display: block;
-    font-size: 20px; } }
+    font-size: 20px; }
+
+  .container {
+    background: rgba(238, 238, 238, 0.85); } }
 @media only screen and (max-width: 768px) {
   .content-area {
     float: none;
