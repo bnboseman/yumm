@@ -648,7 +648,8 @@ ul.categories {
   margin: 20px 0; }
   .recipelisting img {
     width: 100%;
-    height: auto; }
+    height: auto;
+    border-radius: 10px; }
   .recipelisting h2 {
     margin: 0;
     -webkit-margin-before: 0;
