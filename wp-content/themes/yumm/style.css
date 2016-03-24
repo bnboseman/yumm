@@ -596,7 +596,13 @@ ul.categories li {
     font-size: 20px; }
 
   .container {
-    background: rgba(238, 238, 238, 0.9); } }
+    background: rgba(238, 238, 238, 0.9); }
+
+  .recipelisting {
+    font-size: .9em; }
+    .recipelisting h2 {
+      font-size: 1.2em;
+      margin: 0; } }
 @media only screen and (max-width: 768px) {
   .content-area {
     float: none;
@@ -635,5 +641,27 @@ ul.categories {
   display: inline-block;
   width: 100%;
   margin: 20px 0; }
+
+.recipelisting {
+  position: relative;
+  width: 100%;
+  margin: 20px 0; }
+  .recipelisting img {
+    width: 100%;
+    height: auto; }
+  .recipelisting h2 {
+    margin: 0;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 5px; }
+  .recipelisting div {
+    padding: 10px 0;
+    color: #7a694b;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8); }
+    .recipelisting div a {
+      color: #fff; }
 
 /*# sourceMappingURL=style.css.map */

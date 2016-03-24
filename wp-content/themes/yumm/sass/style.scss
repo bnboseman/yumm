@@ -195,6 +195,13 @@ ul.categories li {
     .container {
         background: $lightcontainer;
     }
+    .recipelisting {
+	font-size: .9em;
+	h2 {
+    		font-size: 1.2em;
+		margin: 0;
+    	}
+    }
 }
 @media only screen and (max-width:768px) {
 	.content-area {
@@ -251,3 +258,31 @@ ul.categories {
     width: 100%;
     margin: $twenty 0;
 }
+
+.recipelisting {
+    position: relative;
+    width: 100%;
+    margin: $twenty 0;
+    img {
+	width: 100%;
+	height: auto;
+    }
+    h2 {
+	margin: 0;
+	-webkit-margin-before: 0;
+	-webkit-margin-after: $twenty/4;
+    }
+    div {
+	padding: $twenty/2 0;
+	color: $accentcolor;
+        position: absolute;
+        bottom: 0;
+	text-align: center;
+	width: 100%;
+	background: rgba(0,0,0,.8);
+	a {
+	    color: #fff;
+	}
+    }
+}
+
