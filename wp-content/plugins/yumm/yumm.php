@@ -12,6 +12,7 @@ add_action('init', 'yumm_post_type', 0);
 add_action('admin_init', 'yumm_initialize_options');
 add_action('add_meta_boxes', 'yumm_add_recipe_meta_box');
 add_action( 'save_post', 'yumm_save_recipe_meta_box' );
+add_filter( 'the_content', 'yumm_recipe_content_update' );
 
 /**
  * Register Wiget
@@ -112,6 +113,7 @@ function yumm_recipe_meta_box() {
 	global $post;
 
 	echo '
+		<input type="hidden" name="yumm_nonce" id="yumm_nonce" value="'. wp_create_nonce() . '" />
 		<label for="yumm_prep_time">Prep Time: </label>
 		<input class="widefat" type="text" name="yumm_prep_time" value="' . get_post_meta($post->ID, 'prep_time', true ) . '" />
 		<label for="yumm_ready_in">Ready In: </label>
@@ -124,7 +126,46 @@ function yumm_recipe_meta_box() {
 
 }
 
+function yumm_recipe_content_update($content) {
+	if ($GLOBALS['post']->post_type == 'recipe') {
+		$id = $GLOBALS['post']->ID;
+
+		$prep_time = get_post_meta($id, 'prep_time', true );
+		$ready_in = get_post_meta($id, 'ready_in', true );
+		$calories = get_post_meta($id, 'calories', true );
+		$servings = get_post_meta($id, 'servings', true ) ;
+		$add_on_data = '';
+		if(!empty($prep_time) ) {
+			$add_on_data  .= '<strong>Prep Time: </strong>' . $prep_time . '<br />';
+		}
+
+		if (!empty($ready_in) ) {
+			$add_on_data  .= '<strong>Ready In: </strong>' . $ready_in . '<br />';
+		}
+
+		if(!empty($servings) ) {
+			$add_on_data  .= '<strong>Servings: </strong>' . $servings . '<br />';
+		}
+
+		if (!empty($calories) ) {
+			$add_on_data  .= '<strong>Calories per serving: </strong>' . $calories . '<br />';
+		}
+
+		if (!empty($add_on_data)) {
+			if (strpos($content, '[recipe-info]') !== false) {
+				return str_replace('[recipe-info]', "<div class=\"recipe_info\">$add_on_data</div>", $content);
+			}
+			return "<div class=\"recipe_info\">$add_on_data</div>$content";
+		}
+	}
+
+	return $content;
+}
+
 function yumm_save_recipe_meta_box($post_id) {
+	if ( ! wp_verify_nonce($_POST['yumm_nonce']) ) {
+		return $post_id;
+	}
 	if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE ) {
 		return $post_id;
 	}
@@ -145,8 +186,6 @@ function yumm_save_recipe_meta_box($post_id) {
 	update_post_meta($post_id, 'calories', $calories);
 	update_post_meta($post_id, 'ready_in', $ready_in);
 }
-
-
 
 /**
  * Widget to show all recipe categories
