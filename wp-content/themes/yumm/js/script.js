@@ -1,16 +1,16 @@
 jQuery(document).ready(function($){
-	$( "div[class^='snippet-']" ).click(function() {
+	$( "span[class^='snippet-']" ).click(function() {
 		var id = $(this).attr('data-post-id');
 		var fulltext = $( ".fulltext-" + id );
 		if ( $(this).html().length < fulltext.html().length ) {
-			$(this).hide();
-			$( ".fulltext-" + id ).slideToggle("fast");
+			$(this).hide(250);
+			$( ".fulltext-" + id ).fadeToggle(1000);
 		}
 	});
 	
-	$( "div[class^='fulltext-']" ).click(function() {
+	$( "span[class^='fulltext-']" ).click(function() {
 		var id = $(this).attr('data-post-id');
-		$(this).hide();
-		$( ".snippet-" + id ).slideToggle("fast");
+		$(this).hide(250);
+		$( ".snippet-" + id ).fadeToggle(1000);
 	});
 });
