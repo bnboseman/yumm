@@ -1,4 +1,4 @@
-<?php  
+<?php
 /**
  *  Plugin Name: Yumm Plugin
  *  Description: Plugin to accomply yumm theme
@@ -10,6 +10,8 @@
 add_action('widgets_init', 'yumm_widgets');
 add_action('init', 'yumm_post_type', 0);
 add_action('admin_init', 'yumm_initialize_options');
+add_action('add_meta_boxes', 'yumm_add_recipe_meta_box');
+add_action( 'save_post', 'yumm_save_recipe_meta_box' );
 
 /**
  * Register Wiget
@@ -32,7 +34,7 @@ function yumm_post_type()
         'show_in_menu' => true,
         'hierarchical' => true,
     ));
-    
+
 	// Set up arguments for recipe post type
     $args = array(
          'labels' => array(
@@ -58,14 +60,14 @@ function yumm_post_type()
             'custom-fields',
         ),
     );
-    
-    
+
+
     // Check to see if comments are enabled for recipes; if enabled allow comments
     $comments_setting = get_option( 'yumm_recipe_comments');
     if ($comments_setting == "1") {
     	array_push($args['supports'], 'comments');
     }
-    
+
     // register recipe post type
     register_post_type('recipe', $args);
 }
@@ -78,7 +80,7 @@ function yumm_initialize_options() {
 	register_setting(
 			'discussion',							// option group
 			'yumm_recipe_comments');				// option name
-	
+
 	// Create the setting field for the page
 	add_settings_field(
 			'yumm_recipe_comment', 				// id
@@ -98,12 +100,56 @@ function yumm_comments_input() {
 		<label for="yumm_recipe_comments">
 		<input name="yumm_recipe_comments" type="checkbox" id="yumm_recipe_comments" value="1" <?php echo $setting == '1' ? 'checked="checked"':'' ; ?>">
 		Allow Comments on Recipes</label>
-	</div>	
+	</div>
 <?php }
+
+// Prep time meta box
+function yumm_add_recipe_meta_box() {
+	add_meta_box('yumm_recipe_meta', 'Recipe Options', 'yumm_recipe_meta_box', 'recipe', 'normal', 'high' );
+}
+
+function yumm_recipe_meta_box() {
+	global $post;
+
+	echo '
+		<label for="yumm_prep_time">Prep Time: </label>
+		<input class="widefat" type="text" name="yumm_prep_time" value="' . get_post_meta($post->ID, 'prep_time', true ) . '" />
+		<label for="yumm_ready_in">Ready In: </label>
+		<input class="widefat" type="text" name="yumm_ready_in" value="' . get_post_meta($post->ID, 'ready_in', true ) . '" />
+        <label for="yumm_calories">Calories per serving: </label>
+		<input class="widefat" type="text" name="yumm_calories" value="' . get_post_meta($post->ID, 'calories', true ) . '" />
+		<label for="yumm_servings">Servings: </label>
+		<input class="widefat" type="text" name="yumm_servings" value="' . get_post_meta($post->ID, 'servings', true ) . '" />
+		';
+
+}
+
+function yumm_save_recipe_meta_box($post_id) {
+	if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE ) {
+		return $post_id;
+	}
+
+	// Check permissions to edit pages and/or posts
+	if ( 'recipe' == $_POST['post_type'] ) {
+		if ( !current_user_can( 'edit_page', $post_id ) || !current_user_can( 'edit_post', $post_id ))
+			return $post_id;
+	}
+
+	$prep_time = $_POST['yumm_prep_time'];
+	$servings = $_POST['yumm_servings'];
+	$ready_in = $_POST['yumm_ready_in'];
+	$calories = $_POST['yumm_calories'];
+
+	update_post_meta($post_id, 'prep_time', $prep_time);
+	update_post_meta($post_id, 'servings', $servings);
+	update_post_meta($post_id, 'calories', $calories);
+	update_post_meta($post_id, 'ready_in', $ready_in);
+}
+
 
 
 /**
- * Widget to show all recipe categories 
+ * Widget to show all recipe categories
  * @author nboseman
  *
  */
