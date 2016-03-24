@@ -15,15 +15,6 @@
 				// Print Categories
 				$category_count = count(get_the_category());
 				echo get_the_term_list( get_the_ID(), 'recipe-category', $category_count == 1 ?'<p><strong>Category: </strong>' : '<p><strong>Categories: </strong>', ', ', '</p>'); ?>
-				<?php 
-				// Show any custom fields
-				$fields =  get_post_custom();
-				$keys = array_keys($fields);
-				foreach ( $keys as $key) {
-					if (substr_compare($key, '_', 0, 1) ) {
-						echo "<!-- <p><strong>$key: </strong> {$fields[$key][0]}</p>-->";
-					}
-				} // foreach ( $keys as $key) ?>
 			</header>
 			<?php 
 			// Show image
