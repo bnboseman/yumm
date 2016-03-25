@@ -163,28 +163,28 @@ function yumm_recipe_content_update($content) {
 }
 
 function yumm_save_recipe_meta_box($post_id) {
-	if ( ! wp_verify_nonce($_POST['yumm_nonce']) ) {
-		return $post_id;
-	}
-	if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE ) {
-		return $post_id;
-	}
-
-	// Check permissions to edit pages and/or posts
 	if ( 'recipe' == $_POST['post_type'] ) {
+		if ( ! wp_verify_nonce($_POST['yumm_nonce']) ) {
+			return $post_id;
+		}
+		if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE ) {
+			return $post_id;
+		}
+
+		// Check permissions to edit pages and/or posts
 		if ( !current_user_can( 'edit_page', $post_id ) || !current_user_can( 'edit_post', $post_id ))
 			return $post_id;
+
+		$prep_time = $_POST['yumm_prep_time'];
+		$servings = $_POST['yumm_servings'];
+		$ready_in = $_POST['yumm_ready_in'];
+		$calories = $_POST['yumm_calories'];
+
+		update_post_meta($post_id, 'prep_time', $prep_time);
+		update_post_meta($post_id, 'servings', $servings);
+		update_post_meta($post_id, 'calories', $calories);
+		update_post_meta($post_id, 'ready_in', $ready_in);
 	}
-
-	$prep_time = $_POST['yumm_prep_time'];
-	$servings = $_POST['yumm_servings'];
-	$ready_in = $_POST['yumm_ready_in'];
-	$calories = $_POST['yumm_calories'];
-
-	update_post_meta($post_id, 'prep_time', $prep_time);
-	update_post_meta($post_id, 'servings', $servings);
-	update_post_meta($post_id, 'calories', $calories);
-	update_post_meta($post_id, 'ready_in', $ready_in);
 }
 
 /**
