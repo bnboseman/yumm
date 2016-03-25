@@ -263,6 +263,8 @@ ul.categories {
     position: relative;
     width: 100%;
     margin: $twenty 0;
+    border-top-left-radius: $twenty/2;
+    border-top-right-radius: $twenty/2;
     img {
 	width: 100%;
 	height: auto;
@@ -277,7 +279,7 @@ ul.categories {
 	padding: $twenty/2 0;
 	color: $accentcolor;
         position: absolute;
-        bottom: 0;
+        bottom: 5px;
 	text-align: center;
 	width: 100%;
 	background: rgba(0,0,0,.8);
