@@ -143,9 +143,19 @@ img {
 	   }
 	}
 }
-div[class^='fulltext-'] {
-	display: none;
+
+.article-text {
+    position: relative;
+    div {
+        z-index: 5;
+    }
 }
+span[class^='fulltext-'] {
+    display: none;
+    position: relative;
+    top: 0%;
+}
+
 .widget {
 	ul {
 		list-style: none;

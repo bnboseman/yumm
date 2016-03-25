@@ -554,8 +554,15 @@ img {
   .commentsection .commentlist > li {
     border-bottom: 1px solid #7a694b; }
 
-div[class^='fulltext-'] {
-  display: none; }
+.article-text {
+  position: relative; }
+  .article-text div {
+    z-index: 5; }
+
+span[class^='fulltext-'] {
+  display: none;
+  position: relative;
+  top: 0%; }
 
 .widget ul {
   list-style: none;
